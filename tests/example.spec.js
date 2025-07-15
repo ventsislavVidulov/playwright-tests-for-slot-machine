@@ -40,4 +40,9 @@ test.describe('start-up', () => {
       expect(src).toBe(reelImagesUrls[i % reelImagesUrls.length].url);
     }
   });
+
+  test('autoplay button is visible', async ({ page }) => {
+    const isVisible = await page.getByText('autoplay').isVisible();
+    expect(isVisible).toBeTruthy();
+  });
 });
