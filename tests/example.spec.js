@@ -19,7 +19,7 @@ test.describe('start-up', () => {
   test('page has title', async ({ page }) => {
 
     await expect(page).toHaveTitle('HTML 5 Slot Machine');
-});
+  });
 
   test('spin button is visibale', async ({ page }) => {
     const isVisible = await page.getByText('spin').isVisible();
@@ -29,5 +29,15 @@ test.describe('start-up', () => {
   test('reels are visible', async ({ page }) => {
     const reels = await page.$$('#reels .reel');
     expect(reels.length).toBe(5)
+  });
+
+  test('reels have correct images', async ({ page }) => {
+    // the slot starts with the same images of the Death Star
+    await page.waitForSelector('#reels .reel img');
+    const reels = await page.$$('#reels .reel img');
+    for (let i = 0; i < reels.length; i++) {
+      const src = await reels[i].getAttribute('src');
+      expect(src).toBe(reelImagesUrls[i % reelImagesUrls.length].url);
+    }
   });
 });
