@@ -45,4 +45,9 @@ test.describe('start-up', () => {
     const isVisible = await page.getByText('autoplay').isVisible();
     expect(isVisible).toBeTruthy();
   });
+
+  test('jackpot is visible', async ({ page }) => {
+    const jackpot = await page.$('#jackpot');
+    expect(jackpot).not.toBeNull();
+  });
 });
