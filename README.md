@@ -1,2 +1,2 @@
 ## Playwright slot machine test project
-# used https://github.com/johakr/html5-slot-machine slot machine by author https://github.com/johakr
+### all rights for the tested slot machine https://github.com/johakr/html5-slot-machine software belongs to its author johakr https://github.com/johakr
