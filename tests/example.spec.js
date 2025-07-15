@@ -21,12 +21,13 @@ test.describe('start-up', () => {
     await expect(page).toHaveTitle('HTML 5 Slot Machine');
 });
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+  test('spin button is visibale', async ({ page }) => {
+    const isVisible = await page.getByText('spin').isVisible();
+    expect(isVisible).toBeTruthy();
+  });
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
-
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+  test('reels are visible', async ({ page }) => {
+    const reels = await page.$$('#reels .reel');
+    expect(reels.length).toBe(5)
+  });
 });
