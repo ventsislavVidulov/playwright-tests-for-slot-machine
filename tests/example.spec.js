@@ -112,14 +112,3 @@ async function getSlotMachineState(page) {
   }
   return slotMachineState;
 }
-
-// test('test', async ({ page }) => {
-//   getSlotMachineState(page).then((state) => {
-//     for (let i = 0; i < state.length; i++) {
-//       log(`Reel ${i + 1}:`);
-//       for (let j = 0; j < state[i].length; j++) {
-//         log(`- ${state[i][j].name}`);
-//       }
-//     }
-//   });
-// });
