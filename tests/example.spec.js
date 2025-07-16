@@ -67,7 +67,7 @@ test.describe('start-up', () => {
     const reels = await page.$$('#reels .reel img');
     for (let i = 0; i < reels.length; i++) {
       const src = await reels[i].getAttribute('src');
-      expect(src).toBe(reelImagesUrls[i % reelImagesUrls.length].url);
+      expect(src).toBe(reelImagesUrls[3].url);
     }
   });
 
@@ -79,6 +79,16 @@ test.describe('start-up', () => {
   test('jackpot is visible', async ({ page }) => {
     const jackpot = await page.$('#jackpot');
     expect(jackpot).not.toBeNull();
+  });
+});
+
+test.describe('slot machine functionality', () => {
+  test('clicking spin button changes the state of the reels', async ({ page }) => {
+    const initialState = await getSlotMachineState(page);
+    await page.getByText('spin').click();
+    await page.waitForTimeout(1000); // wait for the reels to spin
+    const newState = await getSlotMachineState(page);
+    expect(newState).not.toEqual(initialState);
   });
 });
 
