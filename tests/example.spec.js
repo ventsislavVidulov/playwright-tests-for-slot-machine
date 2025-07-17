@@ -86,9 +86,9 @@ test.describe('slot machine functionality', () => {
   test('clicking spin button changes the state of the reels', async ({ page }) => {
     const initialState = await getSlotMachineState(page);
     await page.getByText('spin').click();
-    await page.waitForTimeout(10000); // wait for the reels to spin
+    await page.waitForTimeout(5050); // wait for the reels to spin, it takes about 5 seconds
     const newState = await getSlotMachineState(page);
-    expect(newState).not.toEqual(initialState);
+    expect(newState).not.toEqual(initialState); // toEqual performs a deep equality check
   });
 });
 
