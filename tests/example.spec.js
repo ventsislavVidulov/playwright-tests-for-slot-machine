@@ -85,7 +85,7 @@ test.describe('start-up', () => {
 test.describe('slot machine functionality', () => {
   test('clicking spin button changes the state of the reels', async ({ page }) => {
     const initialState = await getSlotMachineState(page);
-    const spinBtn = page.locator('BUTTON', { hasText: 'spin' });
+    const spinBtn = page.locator('button', { hasText: 'spin' });
     await spinBtn.click();
     await spinBtn.isEnabled(); // wait for the spin button to be enabled when the reels stop 
     const newState = await getSlotMachineState(page);
