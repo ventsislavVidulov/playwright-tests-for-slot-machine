@@ -91,6 +91,23 @@ test.describe('slot machine functionality', () => {
     const newState = await getSlotMachineState(page);
     expect(newState).not.toEqual(initialState); // toEqual performs a deep equality check
   });
+
+  test('checking autoplay button and then spin button spins the reels for 3 spins', async ({ page }) => {
+    const initialState = await getSlotMachineState(page);
+    const spinBtn = page.locator('button', { hasText: 'spin' });
+    await spinBtn.click();
+    await spinBtn.isEnabled();
+    const firstState = await getSlotMachineState(page);
+    await spinBtn.click();
+    await spinBtn.isEnabled();
+    const secondState = await getSlotMachineState(page);
+    await spinBtn.click();
+    await spinBtn.isEnabled();
+    const thirdState = await getSlotMachineState(page);
+    expect(firstState).not.toEqual(initialState);
+    expect(secondState).not.toEqual(firstState);
+    expect(thirdState).not.toEqual(secondState);
+  });
 });
 
 async function getSlotMachineState(page) {
