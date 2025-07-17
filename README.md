@@ -1,7 +1,7 @@
 ## Playwright slot machine test project
 ### A playwright test suite for testing a slot machine game.
-The slot machine doesn't have much functionality (wining combinations,
-player's credit meter), and the tests are preaty basic
+The slot machine doesn't have much functionality (winning combinations,
+player's credit meter), and the tests are pretty basic
 ### installation and use:
 - clone the repo
 - open terminal and type "npm i" and then "npx playwright test"
